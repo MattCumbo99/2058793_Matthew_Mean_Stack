@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Budget</title>
+    <script src="budget_functions.js"></script>
+    <style>
+        .form {
+            position: relative;
+            border-style: solid;
+            border-width: 5px;
+            display: inline-block;
+            text-align: center;
+        }
+        .form input {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="form">
+        <label>Add New Budget</label><br><br>
+        <lable>Client Name:</lable>
+        <input type="text" name="clname" id="clname"><br><br>
+        <label>Project Name:</label>
+        <input type="text" name="prname" id="prname"><br><br>
+        <label>Budget:</label>
+        <input type="text" name="budget" id="budget"><br><br>
+        <input type="button" value="Add" onclick="addData()">
+        <input type="reset" value="Clear"><br><br>
+        <a href="ShowTable.html">Back</a>
+    </div>
+</body>
+</html>

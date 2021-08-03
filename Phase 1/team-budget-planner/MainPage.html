@@ -20,15 +20,18 @@
 </head>
 <body>
     <div class="form">
-        <label>Add New Budget</label><br><br>
-        <lable>Client Name:</lable>
-        <input type="text" name="clname" id="clname"><br><br>
-        <label>Project Name:</label>
-        <input type="text" name="prname" id="prname"><br><br>
-        <label>Budget:</label>
-        <input type="text" name="budget" id="budget"><br><br>
-        <input type="button" value="Add" onclick="addData()">
-        <input type="reset" value="Clear"><br><br>
+        <form>
+            <label>Add New Budget</label><br><br>
+            <lable>Client Name:</lable>
+            <input type="text" name="clname" id="clname"><br><br>
+            <label>Project Name:</label>
+            <input type="text" name="prname" id="prname"><br><br>
+            <label>Budget:</label>
+            <input type="number" name="budget" id="budget"><br><br>
+            <input type="button" value="Add" onclick="addData()">
+            <input type="reset" value="Clear"><br><br>
+        </form>
+        
         <a href="ShowTable.html">Back</a>
     </div>
     <input type="button" value="Remove Data" onclick="removeData()">

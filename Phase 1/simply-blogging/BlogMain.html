@@ -10,10 +10,32 @@
         h2 {
             text-align: center;
         }
+        .blogpost {
+            border: solid 1px black;
+        }
+        .posts {
+            padding-left: 20%;
+            padding-right: 20%;
+        }
     </style>
 </head>
-<body>
+<body onload="displayData()">
     <h2>Simply Blogging!</h2>
+    <ul class="nav justify-content-center" id="pills-tab" role="tablist" style="align-items: center;">
+        <li class="nav-item">
+            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#" role="tab" aria-controls="pills-home" aria-selected="true">Add Blog</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#" role="tab" aria-controls="pills-profile" aria-selected="false">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#" role="tab" aria-controls="pills-contact" aria-selected="false">About Us</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#" role="tab" aria-controls="pills-contact" aria-selected="false">Contacts</a>
+        </li>
+    </ul>
+    <hr>
     <div class="container">
         <form class="form-group">
             <div class="row">
@@ -22,18 +44,30 @@
             </div>
             <div class="row">
                 <div class="col-2"><label>Article:</label></div>
-                <div class="col-3"><input type="text" name="article" id="article" class="form-control"></div>
+                <div class="col-3"><textarea rows="5" cols="25" name="article" id="article" class="form-control"></textarea></div>
             </div>
             <div class="row">
-                <div class="col-2"><label>Add Image (optional):</label></div>
-                <div class="col-3"><input type="file" accept="image/*" name="pass" class="form-control"></div>
+                <div class="col-2"><label>Add Image by URL (optional):</label></div>
+                <div class="col-3"><input type="text" name="imgsrc" id="imgsrc" class="form-control"></div>
             </div>
             <div class="row">
-                <div class="col"><input type="submit" value="Submit" class="btn btn-success"></div>
-                <div class="col"><input type="reset" value="Reset" class="btn btn-info"></div>
+                <div class="col"><input type="button" value="Add Blog" class="btn btn-success" onclick="addPost()"></div>
             </div>
         </form>
     </div>
-    
+    <hr>
+    <div class="row posts" id="blogposts">
+              
+    </div>
 </body>
+<!--<div class="col-sm-1 blogpost">
+            <h4>Title</h4>
+            <label>Description</label><br>
+            <label>Image</label>
+        </div>   
+        <div class="col-xs-3 blogpost">
+            <h5>Title</h5>
+            <label>Description</label><br>
+            <label>Image</label>
+        </div>  -->
 </html>

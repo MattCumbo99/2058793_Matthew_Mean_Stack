@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simply Blogging</title>
+    <script src="blog_functions.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Simply Blogging!</h2>
+    <div class="container">
+        <form class="form-group">
+            <div class="row">
+                <div class="col-2"><label>Title:</label></div>
+                <div class="col-3"><input type="text" name="title" id="title" class="form-control"></div>
+            </div>
+            <div class="row">
+                <div class="col-2"><label>Article:</label></div>
+                <div class="col-3"><input type="text" name="article" id="article" class="form-control"></div>
+            </div>
+            <div class="row">
+                <div class="col-2"><label>Add Image (optional):</label></div>
+                <div class="col-3"><input type="file" accept="image/*" name="pass" class="form-control"></div>
+            </div>
+            <div class="row">
+                <div class="col"><input type="submit" value="Submit" class="btn btn-success"></div>
+                <div class="col"><input type="reset" value="Reset" class="btn btn-info"></div>
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>

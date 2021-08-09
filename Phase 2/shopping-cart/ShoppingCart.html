@@ -5,9 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Cart</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
+    <script src="shopper.js"></script>
+    <style>
+        h2 {
+            text-align: center;
+        }
+        .shopItem {
+            border: solid 1px black;
+            padding-bottom: 1%;
+        }
+        a {
+            position: absolute;
+            right: 30%;
+        }
+    </style>
 </head>
-<body>
+<body onload="getTotalItems()">
     <h2>Shopping Cart</h2>
+    <div class="container">
+        <label>Cart Size:</label>
+        <label id="cartsize">...</label>
+        <a href="Checkout.html">Checkout</a><br>
+
+        <div class="row">
+            <div class="col-sm-3 shopItem">
+                <h5>Name: Trendy T-Shirt</h5>
+                <image src="data:image/jpeg;base64,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" class="img-thumbnail"></image>
+                <h6>Price: $25</h6>
+                <input type="button" value="Add Item" onclick="addItem('Trendy T-Shirt', 25)">
+            </div>
+            <div class="col-sm-3 shopItem">
+                <h5>Name: School Pencil Pack</h5>
+                <image src="https://mazerwholesale.com/wp-content/uploads/2015/04/786-1.jpg" class="img-thumbnail"></image>
+                <h6>Price: $5</h6>
+                <input type="button" value="Add Item" onclick="addItem('School Pencil Pack', 5)">
+            </div>
+            <div class="col-sm-3 shopItem">
+                <h5>Name: Nuclear Reactor</h5>
+                <image src="https://i.etsystatic.com/12123489/r/il/5f138a/1417185892/il_794xN.1417185892_l9hj.jpg" class="img-thumbnail"></image>
+                <h6>Price: $3,230</h6>
+                <input type="button" value="Add Item" onclick="addItem('Nuclear Reactor', 3230)">
+            </div>
+            <div class="col-sm-3 shopItem">
+                <h5>Name: Plutonium Rod (10oz)</h5>
+                <image src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/2019-11-22_Radioactive_Plutonium_sample_at_Questacon_museum%2C_Canberra%2C_Australia.jpg/220px-2019-11-22_Radioactive_Plutonium_sample_at_Questacon_museum%2C_Canberra%2C_Australia.jpg" class="img-thumbnail"></image>
+                <h6>Price: $749</h6>
+                <input type="button" value="Add Item" onclick="addItem('Plutonium Rod (1 gram)', 3599)">
+            </div>
+        </div>
+    </div>
 </body>
 </html>

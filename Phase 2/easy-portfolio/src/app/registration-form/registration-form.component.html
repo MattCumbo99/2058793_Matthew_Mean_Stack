@@ -1,0 +1,16 @@
+<div>
+    <h2>Registration</h2>
+    <form #registerRef="ngForm" (ngSubmit)="makeNewUser(registerRef)">
+        <label>First Name:</label>
+        <input type="text" name="fname" ngModel required><br>
+        <label>Last Name:</label>
+        <input type="text" name="lname" ngModel required><br>
+        <label>Username:</label>
+        <input type="text" name="user" ngModel required><br>
+        <label>Password:</label>
+        <input type="password" name="pass" ngModel required><br>
+        <label>Confirm Password:</label>
+        <input type="password" name="repass" ngModel required><br>
+        <input type="submit" value="Register" [disabled]="registerRef.invalid">
+    </form>
+</div>

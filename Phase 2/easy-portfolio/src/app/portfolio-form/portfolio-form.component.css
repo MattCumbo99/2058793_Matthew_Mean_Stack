@@ -1,0 +1,11 @@
+.magicLink {
+    padding: 0;
+    border: none;
+    background: none;
+    color: cornflowerblue;
+    text-decoration: underline;
+    padding-left: 30%;
+}
+h2 {
+    text-align: center;
+}

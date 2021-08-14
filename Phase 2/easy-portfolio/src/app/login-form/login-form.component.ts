@@ -1,5 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-login-form',
@@ -13,15 +12,4 @@ export class LoginFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  checkUser(loginRef:NgForm) : void {
-    let login = loginRef.value;
-    //console.log(login);
-    if (login.user=="Raj" && login.pass=="123") {
-      // Load portfolio page
-    }
-    else {
-      //this.msg = "Failed to login.";
-    }
-    loginRef.reset();
-  }
 }

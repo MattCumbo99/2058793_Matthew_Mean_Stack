@@ -1,0 +1,10 @@
+div {
+    text-align: center;
+}
+.magicLink {
+    color: cornflowerblue;
+    text-decoration: underline;
+    cursor: pointer;
+    background: none;
+    border: none;
+}

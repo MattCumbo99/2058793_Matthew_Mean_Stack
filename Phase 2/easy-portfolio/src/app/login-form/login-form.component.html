@@ -1,1 +1,32 @@
-<p>login-form works!</p>
+<div *ngIf="loginFlag">
+    <h2>Login</h2>
+    <form #loginRef="ngForm" (ngSubmit)="checkUser(loginRef)">
+        <label>Username:</label>
+        <input type="text" name="user" ngModel required><br>
+        <label>Password:</label>
+        <input type="password" name="pass" ngModel required><br>
+        <input type="submit" value="Login" [disabled]="loginRef.invalid">
+    </form>
+    <label>Don't have an account? </label>
+    <input type="button" value="Sign Up" class="magicLink">
+</div>
+<div *ngIf="registerFlag">
+    <h2>Register</h2>
+    <form #registerRef="ngForm" (ngSubmit)="addUser(registerRef)">
+        <label>First name:</label>
+        <input type="text" name="fname" ngModel required><br>
+        <label>Last name:</label>
+        <input type="text" name="lname" ngModel required><br>
+        <label>Username:</label>
+        <input type="text" name="user" ngModel required><br>
+        <label>Password:</label>
+        <input type="password" name="pass" ngModel required><br>
+        <label>Confirm password:</label>
+        <input type="password" name="repass" ngModel required><br>
+        <input type="submit" value="Register">
+    </form>
+</div>
+<div *ngIf="portfolioFlag">
+    <h2>My Profile</h2>
+    <label>Welcome, {{currentUser}}</label>
+</div>

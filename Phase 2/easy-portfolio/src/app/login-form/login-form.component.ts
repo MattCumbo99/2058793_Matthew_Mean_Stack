@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-login-form',
@@ -8,12 +7,13 @@ import { LoginService } from '../login.service';
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent implements OnInit {
-    constructor() { }
+
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  checkUser(loginRef:NgForm) {
+  checkUser(loginRef:NgForm) : void {
     let login = loginRef.value;
     //console.log(login);
     if (login.user=="Raj" && login.pass=="123") {

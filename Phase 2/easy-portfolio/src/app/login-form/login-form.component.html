@@ -4,14 +4,15 @@
         <label>Username:</label>
         <input type="text" name="user" ngModel required><br>
         <label>Password:</label>
-        <input type="password" name="pass" ngModel required><br>
+        <input type="password" name="pass" ngModel required><br><br>
         <input type="submit" value="Login" [disabled]="loginRef.invalid">
-    </form>
+    </form><br><br>
     <label>Don't have an account? </label>
-    <input type="button" value="Sign Up" class="magicLink">
+    <input type="button" value="Sign Up" class="magicLink" (click)="toRegister()">
 </div>
 <div *ngIf="registerFlag">
     <h2>Register</h2>
+    <input type="button" value="Return to login screen" (click)="toLogin()" class="magicLink"><br><br>
     <form #registerRef="ngForm" (ngSubmit)="addUser(registerRef)">
         <label>First name:</label>
         <input type="text" name="fname" ngModel required><br>
@@ -22,11 +23,24 @@
         <label>Password:</label>
         <input type="password" name="pass" ngModel required><br>
         <label>Confirm password:</label>
-        <input type="password" name="repass" ngModel required><br>
-        <input type="submit" value="Register">
+        <input type="password" name="repass" ngModel required><br><br>
+        <input type="submit" value="Register" [disabled]="registerRef.invalid">
     </form>
 </div>
 <div *ngIf="portfolioFlag">
     <h2>My Profile</h2>
-    <label>Welcome, {{currentUser}}</label>
+    <label>Welcome, {{curUserFirstName}} {{curUserLastName}}!</label><br>
+    <label>Not you?</label>
+    <input type="button" value="Logout" (click)="toLogin()" class="magicLink"><br>
+    <form #contactRef="ngForm" (ngSubmit)="addContact(contactRef)">
+        <h4>Add Contact</h4>
+        <label>Contact Name:</label>
+        <input type="text" name="contactname" ngModel required><br>
+        <label>Phone No.:</label>
+        <input type="text" name="phone" ngModel required><br>
+        <input type="submit" value="Save" [disabled]="contactRef.invalid">
+    </form>
+</div>
+<div *ngIf="contactFlag" id="contact_list">
+
 </div>

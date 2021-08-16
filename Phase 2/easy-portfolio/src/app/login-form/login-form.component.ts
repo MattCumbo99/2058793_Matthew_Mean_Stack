@@ -10,7 +10,6 @@ export class LoginFormComponent implements OnInit {
   loginFlag:boolean = true;
   registerFlag:boolean = false;
   portfolioFlag:boolean = false;
-  contactFlag:boolean = false;
   curUserFirstName:string = "";
   curUserLastName:string = "";
   userId:number = 0;
@@ -34,15 +33,13 @@ export class LoginFormComponent implements OnInit {
           this.toPortfolio();
           return;
         }
-        else {
-          alert("Incorrect username or password.");
-          return;
+        else { // Username exists, but the password was wrong
+          break;
         }
       }
     }
     // If we get here, there are no matching accounts
     alert("Incorrect username or password.");
-    loginRef.reset();
   }
 
   addContact(contactRef:NgForm) : void {
@@ -50,6 +47,7 @@ export class LoginFormComponent implements OnInit {
     let contact = {id:this.userId, name:contactInfo.contactname, num:contactInfo.phone};
 
     this.contacts.push(contact);
+    contactRef.reset();
     this.displayContacts();
   }
 
@@ -63,7 +61,7 @@ export class LoginFormComponent implements OnInit {
       // Found a contact belonging to the user
       if (contact.id == this.userId) {
         if (!exists) {
-          display += "<table border='1' class=\"center\"><tr><th>Contact Name</th><th>Phone Number</th></tr>";
+          display += "<br><table border='1' style='margin: 0 auto;'><tr><th>Contact Name</th><th>Phone Number</th></tr>";
           exists = true;
         }
         display += "<tr><td>" + contact.name + "</td><td>" + contact.num + "</td></tr>";
@@ -76,6 +74,11 @@ export class LoginFormComponent implements OnInit {
     else {
       dataTable.innerHTML = display + "</table>";
     }
+  }
+
+  unloadContacts(): void {
+    let dataTable = document.getElementById("contact_list") as HTMLElement;
+    dataTable.innerHTML = "";
   }
 
   // Add an account
@@ -105,19 +108,17 @@ export class LoginFormComponent implements OnInit {
     this.loginFlag = true;
     this.registerFlag = false;
     this.portfolioFlag = false;
-    this.contactFlag = false;
+    this.unloadContacts();
   }
   toRegister() : void {
     this.loginFlag = false;
     this.registerFlag = true;
     this.portfolioFlag = false;
-    this.contactFlag = false;
   }
   toPortfolio() : void {
     this.loginFlag = false;
     this.registerFlag = false;
     this.portfolioFlag = true;
-    this.contactFlag = true;
     this.displayContacts();
   }
 

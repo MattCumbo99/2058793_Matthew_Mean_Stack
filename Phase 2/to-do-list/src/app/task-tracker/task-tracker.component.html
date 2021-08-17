@@ -1,3 +1,34 @@
 <div>
-    <h2>Task Tracker</h2>
+    <h1>Task Tracker</h1>
+    <form #taskRef="ngForm" (ngSubmit)="addTask(taskRef)">
+        <h2>To-Do Tasks</h2><br>
+        <mat-form-field appearance="fill">
+            <mat-label>ID</mat-label>
+            <input matInput name="id" ngModel>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput name="name" ngModel>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Task</mat-label>
+            <input matInput name="task" ngModel>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Deadline</mat-label>
+            <input matInput name="deadline" ngModel>
+        </mat-form-field>
+        <br>
+        <button type="submit" mat-raised-button color="primary">Save</button>
+        <button type="reset" mat-raised-button color="warning">Reset</button>
+    </form>
+    <br>
+    <hr>
+    <br>
+    <div id="tasks">
+        
+    </div>
 </div>

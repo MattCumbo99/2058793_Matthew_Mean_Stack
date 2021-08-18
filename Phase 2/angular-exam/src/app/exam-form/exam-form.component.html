@@ -2,7 +2,7 @@
     <h1>TCS Angular Final Exam</h1>
     <form #examRef="ngForm" (ngSubmit)="finishExam(examRef)">
         <div *ngFor="let q of examQuestions">
-            <mat-radio-group aria-label="Select an option">
+            <mat-radio-group aria-label="Select an option" name={{q.title}}>
                 <h2>{{q.title}}</h2>
                 <mat-radio-button value={{q.ans1}}>{{q.ans1}}</mat-radio-button><br><br>
                 <mat-radio-button value={{q.ans2}}>{{q.ans2}}</mat-radio-button><br><br>

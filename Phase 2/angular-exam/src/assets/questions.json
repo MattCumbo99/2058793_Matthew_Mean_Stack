@@ -1,0 +1,12 @@
+[
+    {"title":"When was the C programming language developed?", "ans1":"1966", "ans2":"1967", "ans3":"1970", "ans4":"1971", "correctAns":"1970"},
+    {"title":"Who was the 38th president of the United States?", "ans1":"John F. Kennedy", "ans2":"Gerald R. Ford", "ans3":"George H. W. Bush", "ans4":"Jimmy Carter", "correctAns":"Gerald R. Ford"},
+    {"title":"What is the name of the longest running TV show?", "ans1":"The Simpsons", "ans2":"Spongebob Squarepants", "ans3":"Friends", "ans4":"Seinfeld", "correctAns":"The Simpsons"},
+    {"title":"Lorem ipsum...", "ans1":"sed do eiusmod", "ans2":"dolor sit amet", "ans3":"quis nostrud exercitation", "ans4":"ut enim ad", "correctAns":"dolor sit amet"},
+    {"title":"What is the name of Blackbeard's ship?", "ans1":"The Black Pearl", "ans2":"Saber of Xebec", "ans3":"Mayflower", "ans4":"Queen Anne's Revenge", "correctAns":"Queen Anne's Revenge"},
+    {"title":"Can a match box?", "ans1":"Yes", "ans2":"No", "ans3":"No, but a tin can", "ans4":" Yes, one beat Mike Tyson", "correctAns":"No, but a tin can"},
+    {"title":"What is the 7th letter of the alphabet?", "ans1":"G", "ans2":"H", "ans3":"I", "ans4":"J", "correctAns":"H"},
+    {"title":"What do you call a wingless fly?", "ans1":"A flap", "ans2":"A walk", "ans3":"A plum", "ans4":"Jason", "correctAns":"A walk"},
+    {"title":"The answer is really big", "ans1":"ANSWER", "ans2":"really big", "ans3":"Infinity", "ans4":"An elephant", "correctAns":"An elephant"},
+    {"title":"Who is NOT king of the pirates?", "ans1":"Henry Every", "ans2":"William Kidd", "ans3":"Gol D. Roger", "ans4":"Elizabeth Swann", "correctAns":"William Kidd"}
+]

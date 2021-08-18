@@ -9,7 +9,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
@@ -27,6 +28,8 @@ import { environment } from '../environments/environment';
     MatButtonModule,
     MatDialogModule,
     FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable

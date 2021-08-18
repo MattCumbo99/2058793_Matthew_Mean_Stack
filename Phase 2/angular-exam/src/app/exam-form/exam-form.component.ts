@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 export interface Question {
   title:string;
@@ -19,6 +20,10 @@ export class ExamFormComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  finishExam(examRef:NgForm): void {
+    
   }
 
   examQuestions:Question[] = [

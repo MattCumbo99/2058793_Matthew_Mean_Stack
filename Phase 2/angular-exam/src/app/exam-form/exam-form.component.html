@@ -1,6 +1,6 @@
 <div>
     <h1>TCS Angular Final Exam</h1>
-    <form #examRef="ngForm">
+    <form #examRef="ngForm" (ngSubmit)="finishExam(examRef)">
         <div *ngFor="let q of examQuestions">
             <mat-radio-group aria-label="Select an option">
                 <h2>{{q.title}}</h2>
@@ -11,5 +11,6 @@
                 <hr>
             </mat-radio-group>
         </div>
+        <button mat-raised-button type="submit" color="primary">Save and Submit</button>
     </form>
 </div>

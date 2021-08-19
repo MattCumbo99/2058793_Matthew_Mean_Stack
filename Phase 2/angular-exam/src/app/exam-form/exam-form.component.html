@@ -4,10 +4,18 @@
         <div *ngFor="let q of examination">
             <h2>{{q.title}}</h2>
             <mat-radio-group aria-label="Select an option" name={{q.title}} ngModel required>
-                <mat-radio-button value={{q.ans1}}>{{q.ans1}}</mat-radio-button><br><br>
-                <mat-radio-button value={{q.ans2}}>{{q.ans2}}</mat-radio-button><br><br>
-                <mat-radio-button value={{q.ans3}}>{{q.ans3}}</mat-radio-button><br><br>
-                <mat-radio-button value={{q.ans4}}>{{q.ans4}}</mat-radio-button><br><br>
+                <mat-radio-button value={{q.ans1}}>
+                    <span id={{q.ans1}}>{{q.ans1}}</span>
+                </mat-radio-button><br><br>
+                <mat-radio-button value={{q.ans2}}>
+                    <span id={{q.ans2}}>{{q.ans2}}</span>
+                </mat-radio-button><br><br>
+                <mat-radio-button value={{q.ans3}}>
+                    <span id={{q.ans3}}>{{q.ans3}}</span>
+                </mat-radio-button><br><br>
+                <mat-radio-button value={{q.ans4}}>
+                    <span id={{q.ans4}}>{{q.ans4}}</span>
+                </mat-radio-button><br><br>
                 <hr>
             </mat-radio-group>
         </div>

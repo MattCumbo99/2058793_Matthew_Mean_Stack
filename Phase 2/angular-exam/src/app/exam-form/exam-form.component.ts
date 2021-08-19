@@ -14,6 +14,7 @@ export class ExamFormComponent implements OnInit {
   curForm:FormGroup;
   correctAnswers:Array<Question> = [];
   totalCorrect:number = 0;
+  endMsg:string = "";
   examDone:boolean = false;
   disabledForm:boolean = false;
 
@@ -63,6 +64,12 @@ export class ExamFormComponent implements OnInit {
       spot++;
     });
     this.totalCorrect = this.correctAnswers.length;
+    if (this.totalCorrect < 7) {
+      this.endMsg = "You failed.";
+    }
+    else {
+      this.endMsg = "You passed!";
+    }
     this.examDone = true;
     this.curForm = examRef.form;
     this.curForm.disable();

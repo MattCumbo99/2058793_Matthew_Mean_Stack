@@ -20,6 +20,6 @@
             </mat-radio-group>
         </div>
         <button *ngIf="!examDone" mat-raised-button type="submit" color="primary" [disabled]="examRef.invalid">Save and Submit</button>
-        <h3 *ngIf="examDone">You got {{totalCorrect}} out of 10 questions right.</h3>
+        <h2 *ngIf="examDone">You got {{totalCorrect}} out of 10 questions right. {{endMsg}}</h2>
     </form>
 </div>

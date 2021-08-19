@@ -19,7 +19,7 @@
                 <hr>
             </mat-radio-group>
         </div>
-        <button mat-raised-button type="submit" color="primary" [disabled]="examRef.invalid">Save and Submit</button>
+        <button *ngIf="!examDone" mat-raised-button type="submit" color="primary" [disabled]="examRef.invalid">Save and Submit</button>
         <h3 *ngIf="examDone">You got {{totalCorrect}} out of 10 questions right.</h3>
     </form>
 </div>

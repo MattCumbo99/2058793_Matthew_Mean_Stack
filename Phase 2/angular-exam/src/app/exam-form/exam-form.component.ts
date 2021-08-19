@@ -15,6 +15,7 @@ export class ExamFormComponent implements OnInit {
   correctAnswers:Array<Question> = [];
   totalCorrect:number = 0;
   examDone:boolean = false;
+  disabledForm:boolean = false;
 
   constructor(public form:FormBuilder, public questionSer:QuestionService) { 
     this.curForm = form.group({});
@@ -48,12 +49,23 @@ export class ExamFormComponent implements OnInit {
       // Check for correct answers
       if (this.examination[spot].correctAns == examRef.value[key]) {
         this.correctAnswers.push(this.examination[spot]); // Add correct answer to bank
+        document.getElementById(examRef.value[key])!.setAttribute("style", "background: lightgreen;");
+        document.getElementById(examRef.value[key])!.append(" (Correct Answer)");
+      }
+      else {
+        // Incorrect answer
+        document.getElementById(examRef.value[key])!.setAttribute("style", "background: crimson;");
+        document.getElementById(examRef.value[key])!.append(" (Incorrect Answer)");
+        // Correct answer
+        document.getElementById(this.examination[spot].correctAns)!.setAttribute("style", "background: lightgreen;");
+        document.getElementById(this.examination[spot].correctAns)!.append(" (Correct Answer)");
       }
       spot++;
     });
     this.totalCorrect = this.correctAnswers.length;
     this.examDone = true;
-
+    this.curForm = examRef.form;
+    this.curForm.disable();
   }
 
 }

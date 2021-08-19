@@ -32,14 +32,13 @@ export class ExamFormComponent implements OnInit {
   }
 
   radioChange(event:MatRadioChange, data:any): void {
-    console.log(data[0].title);
-    console.log(event.value);
+    //console.log(data[0].title);
+    //console.log(event.value);
   }
 
   finishExam(examRef:NgForm): void {
-    let exam = examRef.value;
-    
-    
+    this.curForm = examRef.form.value;
+    console.log(examRef.form.value); // Displays all answers
   }
 
 }

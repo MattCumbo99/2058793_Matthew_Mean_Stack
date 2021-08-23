@@ -8,6 +8,7 @@ var r1 = obj.createInterface({
 //let lastCommand = "";
 
 //do {
+    debugger;
     r1.question("Enter your first name: ", (fname)=> {
         r1.question("Enter your last name: ", (lname)=> {
             r1.question("Enter your gender: ", (genType)=> {
@@ -15,7 +16,7 @@ var r1 = obj.createInterface({
                     let people = JSON.parse(fs.readFileSync("logged-info.json").toString());
                     let curDate = new Date();
                     let person = {firstname:fname, lastname:lname, gender:genType, email:emailAddress,
-                                    dateStored:curDate.getDate(), timeStored:curDate.getTime()};
+                                    dateStored:curDate.getDate().toString(), timeStored:curDate.getTime().toString()};
                     people.push(person);
                     fs.writeFileSync("logged-info.json",JSON.stringify(people));
                     console.log("Record logged successfully.");

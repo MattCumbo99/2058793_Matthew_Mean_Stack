@@ -5,9 +5,7 @@ var r1 = obj.createInterface({
     output:process.stdout
 });
 
-//let lastCommand = "";
-
-//do {
+function start() {
     debugger;
     r1.question("Enter your first name: ", (fname)=> {
         r1.question("Enter your last name: ", (lname)=> {
@@ -16,18 +14,19 @@ var r1 = obj.createInterface({
                     let people = JSON.parse(fs.readFileSync("logged-info.json").toString());
                     let curDate = new Date();
                     let person = {firstname:fname, lastname:lname, gender:genType, email:emailAddress,
-                                    dateStored:curDate.getDate().toString(), timeStored:curDate.getTime().toString()};
+                                    dateStored:curDate.toLocaleString()};
                     people.push(person);
                     fs.writeFileSync("logged-info.json",JSON.stringify(people));
                     console.log("Record logged successfully.");
-                    // r1.question("Make another input? (y/n): ", (answer)=> {
-                    //     if (answer != "y" || answer != "Y") {
-                    //         answer = "n";
-                    //     }
-                    //     lastCommand = answer;
-                    // })
+                    r1.question("Make another input? (y/n): ", (answer)=> {
+                        if (answer == "y" || answer == "Y") {
+                            start();
+                        }
+                    })
                 });
             });
         });
     });
-//} while (lastCommand!="y" || lastCommand!="Y");
+}
+
+start();

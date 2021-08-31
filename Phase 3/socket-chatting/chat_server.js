@@ -1,15 +1,26 @@
 let express = require("express");
+
 let app = express();
-let ws = require("express-ws")(app);
+
+// load the http module and connect to express module with Server property
+let http = require("http").Server(app);
+
+// load the socket.io module and connect http module 
+// with IIFE features 
+let io = require('socket.io')(http);
 
 app.get("/",(request,response)=> {
-    console.log("Client connected");
-
-    socket.on("Message", (data)=> {
-        console.log(data);
-    });
-
-    socket.send("Hello client, you are connected to the socket server.");
+    response.sendFile(__dirname+"\\MainScreen.html");
 });
 
-app.listen(9090, ()=>console.log("Server running on port 9090"));
+io.on("connection",(socket)=> {
+    //console.log("Client connected");
+
+    socket.on("obj",(msg)=> {
+        console.log(msg);
+    });
+
+    socket.emit("obj1", "Hello, client connected to server...");
+});
+
+http.listen(9090, ()=>console.log("Server running on port 9090"));

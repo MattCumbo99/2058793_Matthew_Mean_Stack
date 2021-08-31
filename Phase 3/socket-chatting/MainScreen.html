@@ -5,6 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Window</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/JavaScript">
+        var socket = io();
+        //socket.emit("obj", "Hello server I am web socket client");
+        //socket.emit("obj", "What?");
+        socket.on("obj1",(msg)=> {
+            console.log(msg);
+        });
+
+        function sendMessage() {
+            let username = document.getElementById("name").value;
+            let msg = document.getElementById("message").value;
+            let serverMsgs = ["We will help you shortly.", "Would you like some chocolate?", "Call us at our help desk!",
+                                "Don't forget to subscribe to our news letter!"];
+            let randNum = Math.floor(Math.random()*serverMsgs.length);
+            let serverMsg = serverMsgs[randNum];
+            let curDate = new Date();
+            socket.emit("obj", "Greetings, " + username + "!");
+            socket.emit("obj", "(" + curDate.toLocaleTimeString() + ") Client sent: " + msg);
+            document.getElementById("chatbox").innerHTML += "<h4>(" + curDate.toLocaleTimeString() + ") Server: " + serverMsg + "</h4>";
+            socket.emit("obj", "(" + curDate.toLocaleTimeString() + ") Server sent: " + serverMsg);
+        }
+    </script>
 </head>
 <body>
     <form>
@@ -13,7 +36,10 @@
         <label>Message:</label>
         <textarea id="message" rows="4" cols="20"></textarea>
         <br>
-        <input type="submit" value="Send">
+        <input type="button" value="Send" onclick="sendMessage()">
     </form>
+    <div id="chatbox" style="border: 1px solid black; padding-right: 50%;">
+
+    </div>
 </body>
 </html>

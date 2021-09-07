@@ -1,9 +1,9 @@
 let express = require("express");
-let bodyParser = require("body-parser");
 
 let app = express();
 
-app.use(bodyParser.json());
+let http = require("http").Server(app);
+let io = require("socket.io")(http);
 
 app.get("/", (request,response)=> {
     response.sendFile(__dirname+"\\Index.html");
@@ -25,4 +25,8 @@ app.get("/FetchCourse", (request,response)=> {
     response.sendFile(__dirname+"\\FetchCourse.html");
 });
 
-app.listen(9090, ()=>console.log("Server running on port 9090"));
+io.on("connection", (socket)=> {
+
+});
+
+http.listen(9090, ()=>console.log("Server running on port 9090"));

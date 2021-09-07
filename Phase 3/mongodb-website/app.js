@@ -6,6 +6,18 @@ let url = "mongodb://localhost:27017/tcsmean";
 
 let app = express();
 
+let courseSchema = mongoose.Schema({
+    _id:Number,
+    name:String,
+    desc:String,
+    amount:Number
+});
+
+function turnOnDB() {
+    mongoose.pluralize(null);
+    mongoose.connect(url).then(res=>console.log("Connected")).catch(err=>console.log(err));
+}
+
 app.use(bodyParser.urlencoded({extended:true}));
 
 app.get("/", (request,response)=> {
@@ -35,22 +47,15 @@ app.get("/insertCourse", (request,response)=> {
     let cdesc = request.query.course_description;
     let camount = request.query.course_amount;
     
-    mongoose.pluralize(null);
-    mongoose.connect(url).then(res=>console.log("Connected")).catch(err=>console.log(err));
+    turnOnDB();
 
     let db = mongoose.connection;
 
     db.once("open", ()=> {
-        let courseSchema = mongoose.Schema({
-            _id:Number,
-            name:String,
-            desc:String,
-            amount:Number
-        });
-
         let courseModel = mongoose.model("Courses", courseSchema);
         let course = new courseModel({_id:cid, name:cname, desc:cdesc, amount:camount});
 
+        // Insert the course to the database
         courseModel.insertMany([course], (err,result)=> {
             if (!err) {
                 console.log("Added course with id " + course._id);
@@ -66,7 +71,30 @@ app.get("/insertCourse", (request,response)=> {
 });
 
 app.get("/changeCourse", (request,response)=> {
+    let cid = request.query.course_id;
+    let camount = request.query.course_amount;
 
+    turnOnDB();
+
+    let db = mongoose.connection;
+
+    db.once("open", ()=> {
+
+        let courseModel = mongoose.model("Courses", courseSchema);
+
+        courseModel.updateOne({_id:cid},{$set:{amount:camount}}, (err,result)=> {
+            if (!err && (result.modifiedCount>0 || result.matchedCount>0)) {
+                console.log("Course updated!");
+            }
+            else {
+                console.log(err);
+            }
+            mongoose.disconnect();
+        });
+
+        response.redirect("/UpdateCourse");
+        response.end();
+    });
 });
 
 app.get("/removeCourse", (request,response)=> {

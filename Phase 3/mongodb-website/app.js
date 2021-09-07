@@ -15,7 +15,7 @@ let courseSchema = mongoose.Schema({
 
 function turnOnDB() {
     mongoose.pluralize(null);
-    mongoose.connect(url).then(res=>console.log("Connected")).catch(err=>console.log(err));
+    mongoose.connect(url).then(res=>{}).catch(err=>console.log(err));
 }
 
 app.use(bodyParser.urlencoded({extended:true}));
@@ -37,7 +37,31 @@ app.get("/DeleteCourse", (request,response)=> {
 });
 
 app.get("/FetchCourse", (request,response)=> {
-    response.sendFile(__dirname+"\\FetchCourse.html");
+    //response.sendFile(__dirname+"\\FetchCourse.html");
+    turnOnDB();
+    let db = mongoose.connection;
+
+    db.once("open", ()=> {
+        let courseModel = mongoose.model("Courses", courseSchema);
+
+        courseModel.find({}, (err,doc)=> {
+            if (!err) {
+                response.write("<h1>Course List</h1>");
+                response.write("<a href='/'>Back</a><br><br>");
+                response.write("<table border=1><tr><th>ID</th><th>Course Name</th><th>Description</th><th>Cost</th></tr>");
+                doc.forEach(rec=> {
+                    response.write("<tr><td>"+rec._id+"</td><td>"+rec.name+"</td><td>"+rec.desc+"</td><td>"+rec.amount+"</td></tr>");
+                });
+                response.write("</table>");
+                response.end();
+            }
+            else {
+                console.log(err);
+            }
+            mongoose.disconnect();
+        });
+    });
+    //response.end();
 });
 
 //===================================================================================
@@ -78,6 +102,7 @@ app.get("/changeCourse", (request,response)=> {
 
     let db = mongoose.connection;
 
+    // Use the database to update the course
     db.once("open", ()=> {
 
         let courseModel = mongoose.model("Courses", courseSchema);
@@ -126,7 +151,7 @@ app.get("/removeCourse", (request,response)=> {
 });
 
 app.get("/getCourse", (request,response)=> {
-    
+    //response.append("YEP!");
 });
 
 app.listen(9090, ()=>console.log("Server running on port 9090"));

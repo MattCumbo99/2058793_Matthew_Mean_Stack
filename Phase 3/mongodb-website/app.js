@@ -98,7 +98,31 @@ app.get("/changeCourse", (request,response)=> {
 });
 
 app.get("/removeCourse", (request,response)=> {
-    
+    let cid = request.query.course_id;
+
+    turnOnDB();
+
+    let db = mongoose.connection;
+
+    db.once("open", ()=> {
+        let courseModel = mongoose.model("Courses", courseSchema);
+
+        // Delete the course
+        courseModel.deleteMany({_id:cid}, (err,result)=> {
+            if (!err && result.deletedCount>0) {
+                console.log("Course deleted successfully.");
+            }
+            else if (!err) {
+                console.log("Cannot find course of id " + cid);
+            }
+            else {
+                console.log(err);
+            }
+            mongoose.disconnect();
+        });
+    })
+    response.redirect("/DeleteCourse");
+    response.end();
 });
 
 app.get("/getCourse", (request,response)=> {

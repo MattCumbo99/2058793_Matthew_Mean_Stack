@@ -1,0 +1,11 @@
+{
+  "name": "mongodb-website",
+  "version": "1.0.0",
+  "description": "Connects MongoDB with an HTML website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matthew Cumbo",
+  "license": "ISC"
+}

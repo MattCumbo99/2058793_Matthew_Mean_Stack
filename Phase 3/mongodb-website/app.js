@@ -37,13 +37,13 @@ app.get("/DeleteCourse", (request,response)=> {
 });
 
 app.get("/FetchCourse", (request,response)=> {
-    //response.sendFile(__dirname+"\\FetchCourse.html");
     turnOnDB();
     let db = mongoose.connection;
 
     db.once("open", ()=> {
         let courseModel = mongoose.model("Courses", courseSchema);
 
+        // Pull the table
         courseModel.find({}, (err,doc)=> {
             if (!err) {
                 response.write("<h1>Course List</h1>");
@@ -53,6 +53,7 @@ app.get("/FetchCourse", (request,response)=> {
                     response.write("<tr><td>"+rec._id+"</td><td>"+rec.name+"</td><td>"+rec.desc+"</td><td>"+rec.amount+"</td></tr>");
                 });
                 response.write("</table>");
+                // We end here to avoid a race condition
                 response.end();
             }
             else {
@@ -61,7 +62,6 @@ app.get("/FetchCourse", (request,response)=> {
             mongoose.disconnect();
         });
     });
-    //response.end();
 });
 
 //===================================================================================
@@ -148,10 +148,6 @@ app.get("/removeCourse", (request,response)=> {
     })
     response.redirect("/DeleteCourse");
     response.end();
-});
-
-app.get("/getCourse", (request,response)=> {
-    //response.append("YEP!");
 });
 
 app.listen(9090, ()=>console.log("Server running on port 9090"));

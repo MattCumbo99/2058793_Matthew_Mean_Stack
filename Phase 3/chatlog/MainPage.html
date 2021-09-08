@@ -5,15 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Logger</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/JavaScript">
+        var socket = io();
+
+        function sendMessage() {
+            let uname = document.getElementById("username").value;
+            let msg = document.getElementById("message").value;
+            let chatObj = {username:uname, messageIn:msg};
+
+            socket.emit("messageObj", chatObj);
+        }
+    </script>
 </head>
 <body>
     <h1>Chat Logger</h1>
-    <form action="sendMessage" method="GET">
+    <form>
         <label>Name:</label>
-        <input type="text" name="username"><br>
+        <input type="text" id="username"><br>
         <label>Message:</label><br>
-        <textarea rows="2" cols="35" name="message"></textarea><br>
-        <input type="submit" value="Send">
+        <textarea rows="2" cols="35" id="message"></textarea><br>
+        <input type="button" value="Send" onclick="sendMessage()">
     </form>
 </body>
 </html>

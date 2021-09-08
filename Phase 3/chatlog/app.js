@@ -14,6 +14,7 @@ let chatSchema = mongoose.Schema({
     message:String
 });
 
+// Send the html file through the server
 app.get("/", (request,response)=> {
     response.sendFile(__dirname+"\\MainPage.html");
 });
